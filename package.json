@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
+    "serialport": "^7.0.2",
     "twitter": "^1.3.0",
     "winston": "^3.0.0"
   },
@@ -25,7 +26,8 @@
   "scripts": {
     "test": "webpack --display-error-details && babel-node spec/jasmine-runner",
     "prod": "forever stopall && webpack --mode=production && forever start ./dist/app.js",
-    "dev": "forever stopall && webpack --mode=development && forever start ./dist/app.js",
+    "dev2": "forever stopall && webpack --mode=development && forever start ./dist/app.js",
+    "dev": "webpack --mode=development && node ./dist/app.js",
     "express": "forever stopall && forever start ./dist/app.js",
     "build": "webpack --display-error-details",
     "stats": "webpack --env production --profile --json > stats.json",
