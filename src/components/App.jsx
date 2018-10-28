@@ -25,10 +25,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.mqttClient = mqttService(
-      `lea_${Math.random()
+      `lea_ui_${Math.random()
         .toString(16)
         .substr(2, 8)}`
     );
+    
   }
   componentWillUnmount() {
     this.mqttClient.end();
@@ -40,8 +41,12 @@ class App extends React.Component {
 
   sendMessage = async () => {
     try {
+      console.log("coucou");
+      console.log(this.state.offline);
+      console.log(this.state.message);
+      console.log(`lea/message/${this.state.offline ? 'arduino' : 'tweet'}`);
       await this.mqttClient.publish(
-        `lea/message/${this.state.offline ? 'simple' : 'tweet'}`,
+        `lea/message/${this.state.offline ? 'arduino' : 'tweet'}`,
         this.state.message
       );
       console.log(`Message "${this.state.message}" sent !`);
@@ -52,7 +57,9 @@ class App extends React.Component {
   };
 
   handleKeyDown = event => {
+    console.log("atchoum")
     if (keycode.isEventKey(event, 'enter')) {
+      console.log("beuh")
       this.sendMessage();
       event.preventDefault();
     }
