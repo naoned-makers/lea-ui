@@ -30,7 +30,7 @@ module.exports = env => ({
     new HtmlPlugin({
       template: './assets/index.html'
     }),
-    new CopyPlugin([{ from: `config/env/env.*.json` }]),
+    new CopyPlugin([{ from: `config/env/env.*.json`, to: 'env.json' }]),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
       reportFilename: '../reports/client/report.html',
