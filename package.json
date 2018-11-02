@@ -28,6 +28,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --env.ENV=local --env.PORT=3000 --hot --mode development",
-    "prod": "webpack --mode production"
+    "prod": "webpack --mode production",
+    "build": "webpack --mode production"
   }
 }
