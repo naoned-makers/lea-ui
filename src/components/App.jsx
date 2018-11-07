@@ -29,7 +29,7 @@ class App extends React.Component {
         .toString(16)
         .substr(2, 8)}`
     );
-    
+
   }
   componentWillUnmount() {
     this.mqttClient.end();
@@ -44,9 +44,9 @@ class App extends React.Component {
       console.log("coucou");
       console.log(this.state.offline);
       console.log(this.state.message);
-      console.log(`lea/message/${this.state.offline ? 'arduino' : 'tweet'}`);
+      console.log(`lea/ui/${this.state.offline ? 'brain' : 'tweet'}`);
       await this.mqttClient.publish(
-        `lea/message/${this.state.offline ? 'arduino' : 'tweet'}`,
+        `lea/ui/${this.state.offline ? 'brain' : 'tweet'}`,
         this.state.message
       );
       console.log(`Message "${this.state.message}" sent !`);
