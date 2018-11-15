@@ -20,7 +20,8 @@ const styles = theme => ({
 class App extends React.Component {
   state = {
     offline: false,
-    message: ''
+    message: '',
+    disabled: false
   };
 
   componentDidMount() {
@@ -50,7 +51,10 @@ class App extends React.Component {
         this.state.message
       );
       console.log(`Message "${this.state.message}" sent !`);
-      this.setState({ message: '' });
+      this.setState({ message: '', disabled: true });
+      setTimeout(() => {
+        this.setState({ disabled: false });
+      }, 10000);
     } catch (e) {
       console.error(`Unable to send message : ${e}`);
     }
@@ -87,6 +91,7 @@ class App extends React.Component {
           fullWidth={true}
           placeholder="Saisissez votre message..."
           multiline
+          disabled={(this.state.disabled)? "disabled" : ""}
           rowsMax="5"
           autoFocus={true}
           onKeyDown={this.handleKeyDown}
